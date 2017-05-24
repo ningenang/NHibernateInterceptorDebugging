@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TestService"
+    targetNamespace="http://tempuri.org/TestService.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/TestService.xsd"
+    xmlns:mstns="http://tempuri.org/TestService.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+	<xs:element name="Request" type="mstns:RequestHeaderType"/>
+	<xs:element name="Response" type="mstns:ResponseHeaderType"/>
+	<xs:element name="Voyage" type="mstns:VoyageType"/>
+	<xs:element name="VoyageRequest" type="mstns:VoyageRequest"/>
+
+	<xs:complexType name="RequestHeaderType">
+		<xs:attribute name="UserName" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="ResponseHeaderType">
+		<xs:attribute name="StatusCode" type="mstns:StatusCodeEnumType" use="required" />
+		<xs:attribute name="StatusMessage" type="xs:string" />
+	</xs:complexType>
+
+	<xs:simpleType name="StatusCodeEnumType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="InvalidFormat"/>
+			<xs:enumeration value="Timeout"/>
+			<xs:enumeration value="ServerError"/>
+			<xs:enumeration value="OK"/>
+			<xs:enumeration value="NotFound"/>
+			<xs:enumeration value="NotAvailable"/>
+			<xs:enumeration value="AccessDenied"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="VoyageType">
+		<xs:attribute name="VoyageID" type="xs:integer"/>
+		<xs:attribute name="ShipName" type="xs:string" use="required"/>
+		<xs:attribute name="FromLocation" type="xs:string" use="required"/>
+		<xs:attribute name="ToLocation" type="xs:string" use="required"/>
+		<xs:attribute name="ETD" type="xs:dateTime" use="required"/>
+		<xs:attribute name="ETA" type="xs:dateTime" use ="required"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="VoyageRequest">
+		<xs:sequence>
+			<xs:element name="Header" type="mstns:RequestHeaderType"/>
+			<xs:element name="Body" type="mstns:VoyageType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

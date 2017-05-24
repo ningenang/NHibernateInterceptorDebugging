@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="DAL" namespace="DAL.DTO.Classes" default-cascade="save-update">
+
+	<class name="Person" select-before-update="true" optimistic-lock="version" batch-size="25">
+
+		<id name="PersonID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<version name="ModifiedDate" type="Timestamp" generated="always" />
+
+		<property name="UserIdentification" />
+		<property name="CreatedDate"  generated="insert" />
+		<property name="CreatedByPersonID"  generated="insert" />
+		<property name="ModifiedByPersonID"  generated="always" />
+		<property name="LoggedInPersonID" />
+
+	</class>
+
+</hibernate-mapping>
