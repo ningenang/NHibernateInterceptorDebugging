@@ -14,4 +14,8 @@ To run the application:
 2. Open *LoggedInPersonIDInterceptor.sln*.
 3. Right-click the Solution | Properties | Common Properties | Startup Project.
 4. Select *Multiple startup projects*. Set *Action* to *Start* for the projects *WcfService* and *ConsoleApp*.
-5. Start the application.
+5. (Optional) Right-click *TestService.svc* and select *Set as Start Page*. This opens the WCF Test Client instead of your browser.
+6. Start the application.
+
+
+The application will stop when one user interferes with the transaction of another user, i.e. a voyage is updated with the wrong value for *ModifiedByPersonID*.

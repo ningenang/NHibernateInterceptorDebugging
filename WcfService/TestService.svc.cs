@@ -6,6 +6,7 @@ using SSNInfrastructure.LifetimeManagers;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
+using System.Threading;
 using Util;
 using WcfService.Schema;
 
@@ -45,7 +46,14 @@ namespace WcfService
 					UserIdentification = UnityWrapper.Resolve<ILoginInformation>().UserIdentification,
 				});
 
+				//This variable delay simulates variances in the time it takes to handle a request in the real application.
+				//E.g. some requests take longer to validate since the payload is larger.
 				
+				//Note: If this variable delay is removed, the clients will not interfere with each other.
+				var delay = (int)(1000 * new Random().NextDouble());
+				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Delaying: {delay}, {request.Header.UserName}");
+				Thread.Sleep(delay);
+
 				var user = UnityWrapper.Resolve<ILoginInformation>();
 				if (user == null)
 				{

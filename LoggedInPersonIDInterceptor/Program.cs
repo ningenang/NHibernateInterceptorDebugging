@@ -25,6 +25,7 @@ namespace ConsoleApp
 				Task.Run(async () =>
 				{
 					var w1 = SpawnWriter("foo@client.com", "BoatyMcBoatFace");
+					Thread.Sleep(2000); //Avoid race-condition
 					var w2 = SpawnWriter("bar@client.com", "Titanic");
 
 					await Task.WhenAll(w1, w2);
@@ -46,8 +47,7 @@ namespace ConsoleApp
 
 		private static async Task SpawnWriter(string username, string shipname)
 		{
-			await Task.Run(async () => {
-
+			await Task.Run(() => {
 				try
 				{
 					log.Info($"Retrieving user account for {username}");
@@ -74,7 +74,7 @@ namespace ConsoleApp
 
 					while (isRunning)
 					{
-						var response = await client.SaveOrUpdateVoyageAsync(new WcfService.Schema.VoyageRequest
+						var response = client.SaveOrUpdateVoyage(new WcfService.Schema.VoyageRequest
 						{
 							Header = new WcfService.Schema.RequestHeaderType
 							{
@@ -104,7 +104,6 @@ namespace ConsoleApp
 				{
 					log.Error(ex);
 				}
-				
 			});
 		}
 
