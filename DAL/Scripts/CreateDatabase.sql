@@ -386,6 +386,8 @@ END
 GO
  
 
+ -- Sample users
+
  SET IDENTITY_INSERT Person ON;
  INSERT INTO Person (PersonID, UserIdentification, CreatedDate, CreatedByPersonID, ModifiedDate, ModifiedByPersonID, LoggedInPersonID)
 	VALUES (1000, N'System', GETDATE(), 1000, GETDATE(), 1000, 1000);

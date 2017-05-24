@@ -34,7 +34,7 @@
 	</xs:simpleType>
 
 	<xs:complexType name="VoyageType">
-		<xs:attribute name="VoyageID" type="xs:integer"/>
+		<xs:attribute name="VoyageID" type="xs:int"/>
 		<xs:attribute name="ShipName" type="xs:string" use="required"/>
 		<xs:attribute name="FromLocation" type="xs:string" use="required"/>
 		<xs:attribute name="ToLocation" type="xs:string" use="required"/>

@@ -111,7 +111,9 @@ namespace WcfService.Schema
     [System.Xml.Serialization.XmlRootAttribute("Voyage", Namespace="http://tempuri.org/TestService.xsd", IsNullable=false)]
     public partial class VoyageType {
         
-        private string voyageIDField;
+        private int voyageIDField;
+        
+        private bool voyageIDFieldSpecified;
         
         private string shipNameField;
         
@@ -124,13 +126,24 @@ namespace WcfService.Schema
         private System.DateTime eTAField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="integer")]
-        public string VoyageID {
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int VoyageID {
             get {
                 return this.voyageIDField;
             }
             set {
                 this.voyageIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool VoyageIDSpecified {
+            get {
+                return this.voyageIDFieldSpecified;
+            }
+            set {
+                this.voyageIDFieldSpecified = value;
             }
         }
         
