@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,10 +74,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{7622BE67-1984-4C80-BDFC-10AACE76B28C}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{3989E906-F85C-49D8-8BE6-193DA256F039}</Project>
-      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

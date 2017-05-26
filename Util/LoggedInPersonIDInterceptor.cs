@@ -1,4 +1,4 @@
-﻿using Infrastructure;
+﻿using System.Web;
 
 namespace Util
 {
@@ -12,7 +12,10 @@ namespace Util
 
 			get
 			{
-				return UnityWrapper.Resolve<HasLoggedInPersonID>().LoggedInPersonID;
+				if (int.TryParse(HttpContext.Current.Items[LoggedInPersonIDInterceptorUtil.HttpContextItemsKey]?.ToString(), out var loggedInPersonId))
+					return loggedInPersonId;
+
+				return null;
 			}
 		}
 

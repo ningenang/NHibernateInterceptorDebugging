@@ -14,8 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\Wc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3989E906-F85C-49D8-8BE6-193DA256F039}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernateCleanupModule", "NHibernateCleanupModule\NHibernateCleanupModule.csproj", "{A8670B04-35E1-414A-ADC6-50A1300044C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C993BC93-3193-4D84-8CF7-4F0546972509}"
@@ -45,10 +43,6 @@ Global
 		{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3989E906-F85C-49D8-8BE6-193DA256F039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3989E906-F85C-49D8-8BE6-193DA256F039}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3989E906-F85C-49D8-8BE6-193DA256F039}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3989E906-F85C-49D8-8BE6-193DA256F039}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -123,10 +123,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\Behavior\UnityBehaviorExtensionElement.cs" />
-    <Compile Include="Extensions\Behavior\UnityServiceBehavior.cs" />
-    <Compile Include="Extensions\CallContextInitializer\UnityCallContextInitializer.cs" />
-    <Compile Include="Extensions\Inspectors\UnityOperationContextMessageInspector.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,10 +156,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{7622BE67-1984-4C80-BDFC-10AACE76B28C}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{3989E906-F85C-49D8-8BE6-193DA256F039}</Project>
-      <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\NHibernateCleanupModule\NHibernateCleanupModule.csproj">
       <Project>{a8670b04-35e1-414a-adc6-50a1300044c9}</Project>

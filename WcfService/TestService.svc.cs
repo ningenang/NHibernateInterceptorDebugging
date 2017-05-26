@@ -1,8 +1,5 @@
 ﻿using DAL.Service.Classes;
-using Infrastructure;
 using log4net;
-using Microsoft.Practices.Unity;
-using SSNInfrastructure.LifetimeManagers;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
@@ -30,36 +27,29 @@ namespace WcfService
 		{
 			try
 			{
-				UnityWrapper.ConfiguredContainer.RegisterType<ILoginInformation, WcfLoginInformation>(
-				new UnityOperationContextLifetimeManager(),
-				new InjectionFactory(
-					container =>
-					{
-						log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Creating WCFLoginInformation {request.Header.UserName}");
-						return WcfLoginInformation.Authenticate(request.Header.UserName);
-					})
-				);
-
-				LoggedInPersonIDInterceptorUtil.RegisterPersonIdProviderWcfContext(() => new HasLoggedInPersonID
-				{
-					LoggedInPersonID = UnityWrapper.Resolve<ILoginInformation>().ID,
-					UserIdentification = UnityWrapper.Resolve<ILoginInformation>().UserIdentification,
-				});
-
-				//This variable delay simulates variances in the time it takes to handle a request in the real application.
-				//E.g. some requests take longer to validate since the payload is larger.
-				
-				//Note: If this variable delay is removed, the clients will not interfere with each other.
 				var delay = (int)(1000 * new Random().NextDouble());
-				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Delaying: {delay}, {request.Header.UserName}");
+				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Pre-authenticate delay: {delay}, {request.Header.UserName}");
 				Thread.Sleep(delay);
 
-				var user = UnityWrapper.Resolve<ILoginInformation>();
+
+				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Authenticating {request.Header.UserName}");
+				var user = WcfLoginInformation.Authenticate(request.Header.UserName);
 				if (user == null)
 				{
 					return CreateResponse(StatusCodeEnumType.AccessDenied, $"Login failed for user {request.Header.UserName}");
 				}
 
+				delay = (int)(1000 * new Random().NextDouble());
+				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Post-authenticate delay: {delay}, {request.Header.UserName}");
+				Thread.Sleep(delay);
+
+
+				LoggedInPersonIDInterceptorUtil.RegisterPersonIdProvider(() => user.ID);
+
+
+				delay = (int)(1000 * new Random().NextDouble());
+				log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} Pre-service delay: {delay}, {request.Header.UserName}");
+				Thread.Sleep(delay);
 
 
 				var dto = new VoyageService().GetById(request.Body.VoyageID) ?? new DAL.DTO.Classes.Voyage();
