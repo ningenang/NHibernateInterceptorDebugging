@@ -11,7 +11,7 @@ namespace WcfService
 		{
 			log4net.Config.XmlConfigurator.Configure();
 
-			LoggedInPersonIDInterceptorUtil.SetupSessionFactoryInterceptor();
+			LoggedInPersonIDInterceptorUtil.SetSessionFactoryInterceptor(new WcfLoggedInPersonIDInterceptor());
 		}
 
 	}

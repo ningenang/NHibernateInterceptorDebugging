@@ -63,9 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoggedInPersonIDInterceptor.cs" />
+    <Compile Include="AbstractLoggedInPersonIDInterceptor.cs" />
     <Compile Include="LoggedInPersonIDInterceptorUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WcfLoggedInPersonIDInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{7622BE67-1984-4C80-BDFC-10AACE76B28C}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfExtensions\WcfExtensions.csproj">
+      <Project>{503A07CC-1860-488B-A6B0-852DCDD36C82}</Project>
+      <Name>WcfExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

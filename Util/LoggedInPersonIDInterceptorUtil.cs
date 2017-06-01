@@ -1,32 +1,28 @@
 ﻿using DAL.SessionManagement;
-using log4net;
 using System;
-using System.ServiceModel;
-using System.Web;
 
 namespace Util
 {
+	/// <summary>
+	/// Provides a simple abstraction without creating a dependency to NHibernate
+	/// </summary>
 	public static class LoggedInPersonIDInterceptorUtil
 	{
-		private static readonly ILog log = LogManager.GetLogger(nameof(LoggedInPersonIDInterceptorUtil));
 
-
-		public static readonly string HttpContextItemsKey = "LoggedInPersonIDInterceptor";
-		public static void SetupSessionFactoryInterceptor()
+		public static void SetSessionFactoryInterceptor(AbstractLoggedInPersonIDInterceptor interceptor)
 		{
-			SessionFactory.SessionFactoryInterceptor = new LoggedInPersonIDInterceptor();
+			SessionFactory.SessionFactoryInterceptor = interceptor;
 		}
 
-		public static void RegisterPersonIdProvider(Func<int?> loggedInPersonIdProvider) {
+		public static void RegisterPersonIDProvider(Func<int?> loggedInPersonIDProvider)
+		{
+			var interceptor = SessionFactory.SessionFactoryInterceptor as AbstractLoggedInPersonIDInterceptor;
 
-			var loggedInPersonId = loggedInPersonIdProvider();
+			if (interceptor == null)
+				throw new NotSupportedException($"The SessionFactory must be configured with a SessionFactoryInterceptor of type AbstractLoggedInPersonIDInterceptor");
 
-			log.Debug($"Operation context hash: {OperationContext.Current.GetHashCode()} LIPID: {loggedInPersonId}");
-
-			HttpContext.Current.Items[HttpContextItemsKey] = loggedInPersonId;
+			interceptor.SetValue(loggedInPersonIDProvider);
 		}
-
-
 
 	}
 }

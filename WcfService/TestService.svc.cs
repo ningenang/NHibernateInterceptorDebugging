@@ -44,7 +44,7 @@ namespace WcfService
 				Thread.Sleep(delay);
 
 
-				LoggedInPersonIDInterceptorUtil.RegisterPersonIdProvider(() => user.ID);
+				LoggedInPersonIDInterceptorUtil.RegisterPersonIDProvider(() => user.ID);
 
 
 				delay = (int)(1000 * new Random().NextDouble());

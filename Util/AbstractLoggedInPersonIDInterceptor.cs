@@ -1,23 +1,18 @@
-﻿using System.Web;
+﻿using log4net;
+using System;
 
 namespace Util
 {
-	public class LoggedInPersonIDInterceptor : NHibernate.EmptyInterceptor
+	public abstract class AbstractLoggedInPersonIDInterceptor : NHibernate.EmptyInterceptor
 	{
+
+		private static readonly ILog log = LogManager.GetLogger(nameof(AbstractLoggedInPersonIDInterceptor));
+
 		/// <summary>
 		/// Returns the ID of the currently logged in person if found
 		/// </summary>
-		public int? LoggedInPersonID
-		{
-
-			get
-			{
-				if (int.TryParse(HttpContext.Current.Items[LoggedInPersonIDInterceptorUtil.HttpContextItemsKey]?.ToString(), out var loggedInPersonId))
-					return loggedInPersonId;
-
-				return null;
-			}
-		}
+		public abstract int? GetValue();
+		public abstract void SetValue(Func<int?> valueProvider);
 
 
 		/// <summary>
@@ -62,7 +57,7 @@ namespace Util
 		{
 			int max = propertyNames.Length;
 
-			var lipid = LoggedInPersonID;
+			var lipid = GetValue();
 
 			for (int i = 0; i < max; i++)
 			{

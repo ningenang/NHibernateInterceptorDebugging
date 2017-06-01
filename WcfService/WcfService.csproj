@@ -161,9 +161,9 @@
       <Project>{a8670b04-35e1-414a-adc6-50a1300044c9}</Project>
       <Name>NHibernateCleanupModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Util\Util.csproj">
+    <ProjectReference Include="..\Util\LoggedInPersonIDInterceptor.csproj">
       <Project>{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}</Project>
-      <Name>Util</Name>
+      <Name>LoggedInPersonIDInterceptor</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

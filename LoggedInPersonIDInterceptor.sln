@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "LoggedInPersonIDInterceptor\ConsoleApp.csproj", "{E2422C6D-333B-4607-8C0B-EFBBA8781D5E}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{01AA2A71-6FCD-451E-9A5D-6DF257C31CFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggedInPersonIDInterceptor", "Util\LoggedInPersonIDInterceptor.csproj", "{32818F19-82F1-4E9D-B9C8-1EAA27056FAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernateCleanupModule", "NHibernateCleanupModule\NHibernateCleanupModule.csproj", "{A8670B04-35E1-414A-ADC6-50A1300044C9}"
 EndProject
@@ -20,6 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfExtensions", "WcfExtensions\WcfExtensions.csproj", "{503A07CC-1860-488B-A6B0-852DCDD36C82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8CCA98F6-9077-4D31-8DFF-2CCAAA66EA9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{9885AF63-6218-4B13-89B5-B2ED653B1B4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,8 +53,19 @@ Global
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8670B04-35E1-414A-ADC6-50A1300044C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503A07CC-1860-488B-A6B0-852DCDD36C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503A07CC-1860-488B-A6B0-852DCDD36C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503A07CC-1860-488B-A6B0-852DCDD36C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503A07CC-1860-488B-A6B0-852DCDD36C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7622BE67-1984-4C80-BDFC-10AACE76B28C} = {8CCA98F6-9077-4D31-8DFF-2CCAAA66EA9C}
+		{01AA2A71-6FCD-451E-9A5D-6DF257C31CFE} = {9885AF63-6218-4B13-89B5-B2ED653B1B4A}
+		{32818F19-82F1-4E9D-B9C8-1EAA27056FAA} = {8CCA98F6-9077-4D31-8DFF-2CCAAA66EA9C}
+		{A8670B04-35E1-414A-ADC6-50A1300044C9} = {8CCA98F6-9077-4D31-8DFF-2CCAAA66EA9C}
+		{503A07CC-1860-488B-A6B0-852DCDD36C82} = {9885AF63-6218-4B13-89B5-B2ED653B1B4A}
 	EndGlobalSection
 EndGlobal
